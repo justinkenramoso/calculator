@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none;
 }
 
 .row {
@@ -22,6 +23,10 @@
     height: 55px;
 }
 
+.round-btn:hover {
+    cursor: pointer;
+}
+
 .oval-btn {
     flex-grow: 2;
     height: 55px;
@@ -31,6 +36,15 @@
     justify-content: center;
     align-items: center;
     font-size: xx-large;
+}
+
+.oval-btn:hover {
+    cursor: pointer;
+}
+
+.round-btn:active,
+.oval-btn:active {
+    transform: scale(0.95);
 }
 
 .clear-btn {
@@ -72,6 +86,9 @@
     border-radius: 20px;
     padding: 10px;
     margin-bottom: 20px;
+    color: #EEEEEE;
+    text-align: end;
+    font-size: 3rem;
 }
 
 .input {
