@@ -60,6 +60,8 @@ operationButtons.forEach(operationBtn => {
 const clearButton = document.querySelector(".clear-btn");
 clearButton.addEventListener("click", () => clear());
 
+const decimalButton = document.getElementById("decimal");
+
 function clear() {
     firstNumber = undefined;
     operation = "";
@@ -67,9 +69,14 @@ function clear() {
     display.textContent = "";
     clearOnNextPress = false;
     pressTracker = ["",""]
+    decimalButton.disabled = false;
 }
 
 function numberPress(number) {
+
+    if (number === ".") {
+        decimalButton.disabled = true;
+    }
 
     pressTracker.shift();
     pressTracker.push("num");
