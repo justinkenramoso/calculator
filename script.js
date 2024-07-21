@@ -1,4 +1,7 @@
 const display = document.querySelector(".display");
+const inputArea = document.querySelector(".input");
+let inputAreaWidth = `${inputArea.offsetWidth}px`;
+display.style.width = inputAreaWidth;
 
 const numpad = {
     numbers: ["Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","NumpadDecimal"],
