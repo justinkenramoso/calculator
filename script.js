@@ -1,5 +1,19 @@
 const display = document.querySelector(".display");
 
+const numpad = {
+    numbers: ["Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","NumpadDecimal"],
+    operations: ["NumpadAdd","NumpadSubtract","NumpadMultiply","NumpadDivide","NumpadEnter"],
+    backspace: ["Backspace"]
+}
+
+window.addEventListener("keydown", (event) => {
+    
+    if (numpad.numbers.includes(event.code)) {
+        numberPress(event.code.slice(6))
+    }
+
+})
+
 const numberButtons = [...document.querySelectorAll(".number-btn")];
 numberButtons.forEach(numberBtn => {
     numberBtn.addEventListener("click", () => numberPress(numberBtn.textContent))
@@ -73,6 +87,7 @@ function clear() {
     clearOnNextPress = false;
     pressTracker = ["",""]
     decimalButton.disabled = false;
+    decimalPointPresent = false;
 }
 
 function backspace() {
@@ -83,8 +98,14 @@ function backspace() {
 
 function numberPress(number) {
 
-    if (number === ".") {
+    if (number === "." || number === "Decimal") {
+        if (decimalPointPresent) {
+            return;
+        }
         decimalButton.disabled = true;
+        decimalPointPresent = true;
+        display.textContent += ".";
+        return;
     }
 
     pressTracker.shift();
@@ -102,6 +123,7 @@ let operation = "";
 let secondNumber;
 let clearOnNextPress = false;
 let pressTracker = ["",""];
+let decimalPointPresent = false;
 
 function add(num1, num2) {
     return num1 + num2;
