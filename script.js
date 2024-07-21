@@ -60,6 +60,9 @@ operationButtons.forEach(operationBtn => {
 const clearButton = document.querySelector(".clear-btn");
 clearButton.addEventListener("click", () => clear());
 
+const backspaceBtn = document.querySelector(".backspace-btn");
+backspaceBtn.addEventListener("click", () => backspace());
+
 const decimalButton = document.getElementById("decimal");
 
 function clear() {
@@ -70,6 +73,12 @@ function clear() {
     clearOnNextPress = false;
     pressTracker = ["",""]
     decimalButton.disabled = false;
+}
+
+function backspace() {
+    let displayOnScreen = display.textContent;
+    displayOnScreen = displayOnScreen.substring(0, displayOnScreen.length - 1);
+    display.textContent = displayOnScreen;
 }
 
 function numberPress(number) {
